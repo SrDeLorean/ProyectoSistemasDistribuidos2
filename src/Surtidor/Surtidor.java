@@ -5,6 +5,7 @@
  */
 package Surtidor;
 
+import EstacionDeServicio.EstacionDeServicio;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -143,18 +144,16 @@ public class Surtidor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
+       
         String ip = "localhost";
         int port = 10012;
-        Socket sc;
-        try {
-            sc = new Socket(ip, port);
-            DataInputStream in = new DataInputStream(sc.getInputStream());
-            DataOutputStream out = new DataOutputStream(sc.getOutputStream());
-            String line="echando bencinaaaa";
-            out.writeUTF(line);
+
+        try (Socket ss = new Socket(ip, port)) {
+            DataInputStream in = new DataInputStream(ss.getInputStream());
+            DataOutputStream out = new DataOutputStream(ss.getOutputStream());
+            out.writeUTF("mandado de informacion");
         } catch (IOException ex) {
-            Logger.getLogger(Surtidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 
