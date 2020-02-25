@@ -21,14 +21,14 @@ public class EstacionDeServicio {
      */
     public static void main(String args[]) throws IOException {
         int port = 10012;
-        ServerSocket ss = new ServerSocket(port);
-        String line;
-        Socket sc = ss.accept();
-        DataInputStream in = new DataInputStream(sc.getInputStream());
-        DataOutputStream out = new DataOutputStream(sc.getOutputStream());
+        ServerSocket listener = new ServerSocket(port);
         while(true){
-            line= in.readUTF();
-            System.out.println(line);
+            Socket sc = listener.accept();
+            System.out.println("Cliente " + sc.getRemoteSocketAddress() + " se ha conectado");
+            DataInputStream in = new DataInputStream(sc.getInputStream());
+            DataOutputStream out = new DataOutputStream(sc.getOutputStream());
+            System.out.println(in.readUTF());
+            out.writeUTF("Vete no quiero hablar contigo");
         }
     }
 }
