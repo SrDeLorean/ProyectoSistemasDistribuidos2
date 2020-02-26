@@ -193,25 +193,32 @@ public class Surtidor extends javax.swing.JFrame {
     }//GEN-LAST:event_cantidadDeCargaActionPerformed
 
     private void GenerarBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarBoletaActionPerformed
-        if (!this.cantidadDeCarga.getText().isEmpty()) {
-            String ip = "localhost";
-            int port = 10012;
+        if (!this.cantidadDeCarga.getText().isEmpty() ) {
+            if (isNumeric(this.cantidadDeCarga.getText())) {
+                String ip = "localhost";
+                int port = 10012;
 
-            try (Socket ss = new Socket(ip, port)) {
-                DataInputStream in = new DataInputStream(ss.getInputStream());
-                DataOutputStream out = new DataOutputStream(ss.getOutputStream());
-                out.writeUTF("mandado de informacion");
-            } catch (IOException ex) {
-                Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
+                try (Socket ss = new Socket(ip, port)) {
+                    DataInputStream in = new DataInputStream(ss.getInputStream());
+                    DataOutputStream out = new DataOutputStream(ss.getOutputStream());
+                    out.writeUTF("mandado de informacion");
+                } catch (IOException ex) {
+                    Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "Se ha generado la boleta correctamente");
+                cantidadDeCarga.setText("");
+                jComboBox1.setSelectedIndex(0);
+                totalAPagar.setText("0");
+                valorPorLitro.setText("por ver");
             }
-            JOptionPane.showMessageDialog(null, "Se ha generado la boleta correctamente");
-            cantidadDeCarga.setText("");
-            jComboBox1.setSelectedIndex(0);
-            totalAPagar.setText("0");
-            valorPorLitro.setText("por ver");
+            else{
+                JOptionPane.showMessageDialog(null, "Debes ingresar valores numericos en la cantidad a cargar", "Error en los datos ingresados", JOptionPane.WARNING_MESSAGE);
+                cantidadDeCarga.setText("");
+            }
+            
         }
         else{
-            JOptionPane.showMessageDialog(null, "No puedes generar una boleta vacia", "Mensaje en la barra de titulo", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No puedes generar una boleta vacia", "Boleta vacia", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_GenerarBoletaActionPerformed
@@ -241,6 +248,14 @@ public class Surtidor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_totalAPagarActionPerformed
 
+    private boolean isNumeric(String cadena){
+	try {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+}
     /**
      * @param args the command line arguments
      */
