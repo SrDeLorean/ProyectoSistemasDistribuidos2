@@ -198,12 +198,17 @@ public class Surtidor extends javax.swing.JFrame {
                 String ip = "localhost";
                 int port = 10012;
 
-        try (Socket ss = new Socket(ip, port)) {
-            DataInputStream in = new DataInputStream(ss.getInputStream());
-            DataOutputStream out = new DataOutputStream(ss.getOutputStream());
-            out.writeUTF("mandado de informacion");
-        } catch (IOException ex) {
-            Logger.getLogger(ObservadorSurtidores.class.getName()).log(Level.SEVERE, null, ex);
+                try (Socket ss = new Socket(ip, port)) {
+                    DataInputStream in = new DataInputStream(ss.getInputStream());
+                    DataOutputStream out = new DataOutputStream(ss.getOutputStream());
+                    out.writeUTF("mandado de informacion");
+                } catch (IOException ex) {
+                    Logger.getLogger(ObservadorSurtidores.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "La cantidad de carga debe ser numerica", "Error cantidad de carga", JOptionPane.WARNING_MESSAGE);
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "No puedes generar una boleta vacia", "Boleta vacia", JOptionPane.WARNING_MESSAGE);
