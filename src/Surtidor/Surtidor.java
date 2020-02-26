@@ -5,7 +5,7 @@
  */
 package Surtidor;
 
-import EstacionDeServicio.EstacionDeServicio;
+import EstacionDeServicio.ObservadorSurtidores;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -153,7 +153,7 @@ public class Surtidor extends javax.swing.JFrame {
             DataOutputStream out = new DataOutputStream(ss.getOutputStream());
             out.writeUTF("mandado de informacion");
         } catch (IOException ex) {
-            Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ObservadorSurtidores.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarActionPerformed
 
