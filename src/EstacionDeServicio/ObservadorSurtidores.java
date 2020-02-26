@@ -5,7 +5,7 @@
  */
 package EstacionDeServicio;
 
-import Sucursal.Servidor;
+import CasaMatriz.Servidor;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
