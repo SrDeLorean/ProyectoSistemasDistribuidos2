@@ -24,7 +24,10 @@ public class CasaMatriz extends javax.swing.JFrame implements Observer{
     
     public CasaMatriz() {
         initComponents();
+        this.estacionesDeServicios.addItem("");
+        this.estacionesDeServicios.setSelectedIndex(0);
         s = new Servidor(5000);
+        s.addObserver(this);
         Thread t = new Thread(s);
         t.start();
     }
@@ -236,11 +239,9 @@ public class CasaMatriz extends javax.swing.JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        this.estacionesDeServicios.removeAllItems();
-        for(int i=0; i<this.s.getEstacionesdeservicio().size(); i++){
-            this.estacionesDeServicios.addItem(this.s.getEstacionesdeservicio().get(i).getInetAddress().toString());
+        if (arg instanceof String) {
+            this.estacionesDeServicios.addItem((String) arg);
+            this.estacionesDeServicios.setSelectedIndex(0);
         }
-        this.estacionesDeServicios.setSelectedIndex(0);
-        System.out.println("entre a update");
     }
 }

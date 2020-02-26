@@ -40,6 +40,9 @@ public class Servidor extends Observable implements Runnable{
                 sc = servidor.accept();
                 System.out.println("estacion de servicio conectada");
                 this.estacionesdeservicio.add(sc);
+                this.setChanged();
+                this.notifyObservers(sc.getInetAddress().toString());
+                this.clearChanged();
             }
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
