@@ -5,7 +5,7 @@
  */
 package Surtidor;
 
-import EstacionDeServicio.EstacionDeServicio;
+import EstacionDeServicio.ObservadorSurtidores;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -198,24 +198,12 @@ public class Surtidor extends javax.swing.JFrame {
                 String ip = "localhost";
                 int port = 10012;
 
-                try (Socket ss = new Socket(ip, port)) {
-                    DataInputStream in = new DataInputStream(ss.getInputStream());
-                    DataOutputStream out = new DataOutputStream(ss.getOutputStream());
-                    out.writeUTF("mandado de informacion");
-                } catch (IOException ex) {
-                    Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JOptionPane.showMessageDialog(null, "Se ha generado la boleta correctamente");
-                cantidadDeCarga.setText("");
-                jComboBox1.setSelectedIndex(0);
-                totalAPagar.setText("0");
-                valorPorLitro.setText("por ver");
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Debes ingresar valores numericos en la cantidad a cargar", "Error en los datos ingresados", JOptionPane.WARNING_MESSAGE);
-                cantidadDeCarga.setText("");
-            }
-            
+        try (Socket ss = new Socket(ip, port)) {
+            DataInputStream in = new DataInputStream(ss.getInputStream());
+            DataOutputStream out = new DataOutputStream(ss.getOutputStream());
+            out.writeUTF("mandado de informacion");
+        } catch (IOException ex) {
+            Logger.getLogger(ObservadorSurtidores.class.getName()).log(Level.SEVERE, null, ex);
         }
         else{
             JOptionPane.showMessageDialog(null, "No puedes generar una boleta vacia", "Boleta vacia", JOptionPane.WARNING_MESSAGE);
