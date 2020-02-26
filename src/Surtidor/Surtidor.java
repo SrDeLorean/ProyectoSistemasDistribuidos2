@@ -205,6 +205,11 @@ public class Surtidor extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(ObservadorSurtidores.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                JOptionPane.showMessageDialog(null, "La boleta fue generada satisfactoriamente", "Boleta", JOptionPane.INFORMATION_MESSAGE);
+                cantidadDeCarga.setText("");
+                jComboBox1.setSelectedIndex(0);
+                totalAPagar.setText("0");
+                valorPorLitro.setText("por ver");
             }
             else{
                 JOptionPane.showMessageDialog(null, "La cantidad de carga debe ser numerica", "Error cantidad de carga", JOptionPane.WARNING_MESSAGE);
