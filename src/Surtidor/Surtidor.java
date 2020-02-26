@@ -203,7 +203,7 @@ public class Surtidor extends javax.swing.JFrame {
                     DataOutputStream out = new DataOutputStream(ss.getOutputStream());
                     out.writeUTF("mandado de informacion");
                 } catch (IOException ex) {
-                    Logger.getLogger(EstacionDeServicio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Surtidor.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 JOptionPane.showMessageDialog(null, "Se ha generado la boleta correctamente");
                 cantidadDeCarga.setText("");
