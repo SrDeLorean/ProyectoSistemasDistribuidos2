@@ -8,26 +8,18 @@ import java.io.Serializable;
  */
 public class Precios implements Serializable{
     
-    private double kerosene;
-    private double disel;
     private double b93;
     private double b95;
     private double b97;
+    private double disel;
+    private double kerosene;
 
-    public Precios(double kerosene, double disel, double b93, double b95, double b97) {
-        this.kerosene = kerosene;
-        this.disel = disel;
+    public Precios(double b93, double b95, double b97, double disel, double kerosene) {
         this.b93 = b93;
         this.b95 = b95;
         this.b97 = b97;
-    }
-
-    public double getKerosene() {
-        return kerosene;
-    }
-
-    public double getDisel() {
-        return disel;
+        this.disel = disel;
+        this.kerosene = kerosene;
     }
 
     public double getB93() {
@@ -42,5 +34,11 @@ public class Precios implements Serializable{
         return b97;
     }
     
-    
+    public double getDisel() {
+        return disel;
+    }
+
+    public double getKerosene() {
+        return kerosene;
+    }
 }

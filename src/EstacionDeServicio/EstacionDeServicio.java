@@ -12,12 +12,12 @@ import java.util.Observer;
  *
  * @author SrDeLorean
  */
-public class EstacionDeServicioo extends javax.swing.JFrame implements Observer{
+public class EstacionDeServicio extends javax.swing.JFrame implements Observer{
 
     /**
      * Creates new form EstacionDeServicioo
      */
-    public EstacionDeServicioo() {
+    public EstacionDeServicio() {
         initComponents();
         ObservadorSucursal c = new ObservadorSucursal(5000);
         c.addObserver(this);
@@ -71,20 +71,21 @@ public class EstacionDeServicioo extends javax.swing.JFrame implements Observer{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EstacionDeServicioo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstacionDeServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EstacionDeServicioo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstacionDeServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EstacionDeServicioo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstacionDeServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EstacionDeServicioo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EstacionDeServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EstacionDeServicioo().setVisible(true);
+                new EstacionDeServicio().setVisible(true);
             }
         });
     }

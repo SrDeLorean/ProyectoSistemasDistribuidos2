@@ -1,4 +1,4 @@
-package Sucursal;
+package CasaMatriz;
 
 import java.net.*;
 import java.io.*;
@@ -40,6 +40,9 @@ public class Servidor extends Observable implements Runnable{
                 sc = servidor.accept();
                 System.out.println("estacion de servicio conectada");
                 this.estacionesdeservicio.add(sc);
+                this.setChanged();
+                this.notifyObservers(sc.getInetAddress().toString());
+                this.clearChanged();
             }
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,10 +98,15 @@ public class Servidor extends Observable implements Runnable{
             DataOutputStream dos = new DataOutputStream(this.estacionesdeservicio.get(0).getOutputStream());
             dos.writeInt(3);
             System.out.println(in.readUTF());
-        
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public ArrayList<Socket> getEstacionesdeservicio() {
+        return estacionesdeservicio;
+    }
+    
+    
     
 }
